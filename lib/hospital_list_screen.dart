@@ -20,7 +20,7 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
   }
 
   Future<void> fetchHospitals() async {
-    final response = await http.get(Uri.parse('https://691f-117-250-228-98.ngrok-free.app/api/hospitals/'));
+    final response = await http.get(Uri.parse('http://192.168.232.144:8000/api/hospitals/'));
     if (response.statusCode == 200) {
       hospitals = jsonDecode(response.body);
       setState(() {});
@@ -46,7 +46,7 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => HospitalDetailsScreen(hospitalId: hospital['id']),
+                  builder: (context) => HospitalDetailsScreen(hospitalId: hospital['id'], hospitalName: hospital['hospital_name'],),
                 ),
               );
             },
