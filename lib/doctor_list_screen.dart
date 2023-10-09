@@ -22,7 +22,7 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
   }
 
   Future<void> fetchDoctors() async {
-    final response = await http.get(Uri.parse('https://691f-117-250-228-98.ngrok-free.app/api/hospitals/${widget.hospitalId}/departments/${widget.departmentId}/doctors/'));
+    final response = await http.get(Uri.parse('https://298b-117-250-228-98.ngrok-free.appapi/hospitals/${widget.hospitalId}/departments/${widget.departmentId}/doctors/'));
     if (response.statusCode == 200) {
       doctors = jsonDecode(response.body);
       setState(() {});
