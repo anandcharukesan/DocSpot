@@ -27,7 +27,7 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
   }
 
   Future<void> fetchDepartments() async {
-    final response = await http.get(Uri.parse('http://192.168.232.144:8000/api/hospitals/${widget.hospitalId}/departments/'));
+    final response = await http.get(Uri.parse('http://192.168.137.194:8000/api/hospitals/${widget.hospitalId}/departments/'));
     if (response.statusCode == 200) {
       departments = jsonDecode(response.body);
       setState(() {});
@@ -77,7 +77,7 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                       MaterialPageRoute(
                         builder: (context) => DoctorListScreen(
                           hospitalId: widget.hospitalId,
-                          departmentId: department['id'],
+                          departmentId: department['department_id'],
                         ),
                       ),
                     );
