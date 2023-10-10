@@ -22,6 +22,8 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
   }
 
   Future<void> fetchDoctors() async {
+    print(widget.hospitalId);
+    print(widget.departmentId);
     final response = await http.get(Uri.parse('http://192.168.137.1:8000/api/hospitals/${widget.hospitalId}/departments/${widget.departmentId}/doctors/'));
     if (response.statusCode == 200) {
       doctors = jsonDecode(response.body);
