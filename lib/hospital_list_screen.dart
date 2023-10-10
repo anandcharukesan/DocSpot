@@ -36,7 +36,9 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
   }
 
   Future<void> fetchHospitals() async {
-    final response = await http.get(Uri.parse('https://298b-117-250-228-98.ngrok-free.app/api/hospitals/'));
+
+    final response = await http.get(Uri.parse('http://192.168.137.194:8000/api/hospitals/'));
+
     if (response.statusCode == 200) {
       hospitals = jsonDecode(response.body);
       setState(() {});
@@ -48,6 +50,7 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -98,6 +101,7 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                       ),
                     ),
                   ),
+
                 ),
               ),
             ),
