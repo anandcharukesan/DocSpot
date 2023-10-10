@@ -127,7 +127,7 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => HospitalDetailsScreen(hospitalId: hospital['id']),
+                                builder: (context) => HospitalDetailsScreen(hospitalId: hospital['id'], hospitalName: hospital['hospital_name'],),
                               ),
                             );
                           },
