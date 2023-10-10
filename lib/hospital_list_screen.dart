@@ -37,6 +37,7 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
 
   Future<void> fetchHospitals() async {
     final response = await http.get(Uri.parse('http://192.168.137.1:8000/api/hospitals/'));
+
     if (response.statusCode == 200) {
       hospitals = jsonDecode(response.body);
       setState(() {});
@@ -48,6 +49,7 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -110,6 +112,7 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                       ),
                     ),
                   ),
+
                 ),
               ),
             ),
@@ -134,6 +137,7 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                          // Background color of the search bar
                         borderRadius: BorderRadius.circular(17.0),
                       ),
+
                       child: Card(
                         color: Color(0xFFf8f4ff),
 
@@ -150,12 +154,13 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => HospitalDetailsScreen(hospitalId: hospital['id']),
+                                    builder: (context) => HospitalDetailsScreen(hospitalId: hospital['id'],hospitalName: hospital['hospital_name'],),
                                   ),
                                 );
                               },
                             ),
                           ),
+
                         ),
                       ),
                     ),

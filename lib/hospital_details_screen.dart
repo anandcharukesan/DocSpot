@@ -6,8 +6,12 @@ import 'doctor_list_screen.dart';
 
 class HospitalDetailsScreen extends StatefulWidget {
   final int hospitalId;
+  final String hospitalName;
 
-  HospitalDetailsScreen({required this.hospitalId});
+  HospitalDetailsScreen({
+    required this.hospitalId,
+    required this.hospitalName,
+  });
 
   @override
   _HospitalDetailsScreenState createState() => _HospitalDetailsScreenState();
@@ -26,6 +30,7 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
 
   Future<void> fetchDepartments() async {
     final response = await http.get(Uri.parse('http://192.168.137.1:8000/api/hospitals/${widget.hospitalId}/departments/'));
+
     if (response.statusCode == 200) {
       departments = jsonDecode(response.body);
       setState(() {});
@@ -66,11 +71,14 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
           children: [
             // Departments Tab
             ListView.builder(
+
               itemCount: departments.length,
               itemBuilder: (BuildContext context, int index) {
                 final department = departments[index];
                 return ListTile(
+
                   title: Text(department['department_name']),
+
                   subtitle: Text(department['description']),
                   onTap: () {
                     Navigator.push(
@@ -100,6 +108,7 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
             ),
           ],
         ),
+
       ),
     );
   }
