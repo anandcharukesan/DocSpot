@@ -1,27 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../api/endPoint.dart';
+import '../../api/endPoint.dart';
 import 'hospital_details_screen.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Hospital List',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HospitalListScreen(),
-    );
-  }
-}
 
 class HospitalListScreen extends StatefulWidget {
+
+  final int isFirst; // Add this line
+
+  HospitalListScreen({required this.isFirst});
   @override
   _HospitalListScreenState createState() => _HospitalListScreenState();
 }
