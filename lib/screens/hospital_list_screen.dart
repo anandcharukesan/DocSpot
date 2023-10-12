@@ -36,7 +36,8 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
   }
 
   Future<void> fetchHospitals() async {
-    final response = await http.get(Uri.parse('http://192.168.137.1:8000/api/hospitals/'));
+    final response =
+        await http.get(Uri.parse('http://192.168.29.206:8000/api/hospitals/'));
 
     if (response.statusCode == 200) {
       hospitals = jsonDecode(response.body);
@@ -49,9 +50,8 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -64,20 +64,23 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
               padding: EdgeInsets.all(8.0),
               sliver: SliverToBoxAdapter(
                 child: Padding(
-                  padding: EdgeInsets.symmetric( horizontal: 22.0),
+                  padding: EdgeInsets.symmetric(horizontal: 22.0),
                   child: Container(
-                    margin: EdgeInsets.only( top: 120, bottom: 25),
-                    padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
+                    margin: EdgeInsets.only(top: 120, bottom: 25),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey, // Shadow color
-                          offset: Offset(0, 2), // Offset of the shadow (horizontal, vertical)
+                          offset: Offset(0,
+                              2), // Offset of the shadow (horizontal, vertical)
                           blurRadius: 8, // Blur radius of the shadow
                           spreadRadius: 0, // Spread radius of the shadow
                         ),
                       ],
-                      color: Color(0xFFf8f4ff), // Background color of the search bar
+                      color: Color(
+                          0xFFf8f4ff), // Background color of the search bar
                       borderRadius: BorderRadius.circular(17.0),
                     ),
                     child: TextField(
@@ -86,7 +89,6 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                       decoration: InputDecoration(
                         hintText: 'Search Hospitals',
                         border: InputBorder.none,
-
                       ),
                     ),
                   ),
@@ -99,10 +101,13 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                   margin: EdgeInsets.only(bottom: 20),
                   decoration: BoxDecoration(
                       color: Color(0xFFa48dd0),
-                      borderRadius: BorderRadius.only(topRight: Radius.circular(17), topLeft: Radius.circular(17), bottomRight: Radius.circular(17))
-                  ),
+                      borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(17),
+                          topLeft: Radius.circular(17),
+                          bottomRight: Radius.circular(17))),
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 14, bottom: 14, right: 30, left: 30),
+                    padding: const EdgeInsets.only(
+                        top: 14, bottom: 14, right: 30, left: 30),
                     child: Text(
                       'Top Hospitals',
                       style: TextStyle(
@@ -112,18 +117,17 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                       ),
                     ),
                   ),
-
                 ),
               ),
             ),
-
-
             SliverList(
               delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
+                (BuildContext context, int index) {
                   final hospital = hospitals[index];
                   return Padding(
-                    padding: EdgeInsets.symmetric(vertical: 3.0, horizontal: 22.0), // Add vertical padding
+                    padding: EdgeInsets.symmetric(
+                        vertical: 3.0,
+                        horizontal: 22.0), // Add vertical padding
                     child: Container(
                       decoration: BoxDecoration(
                         boxShadow: [
@@ -134,13 +138,11 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                             spreadRadius: 0, // Spread radius of the shadow
                           ),
                         ],
-                         // Background color of the search bar
+                        // Background color of the search bar
                         borderRadius: BorderRadius.circular(17.0),
                       ),
-
                       child: Card(
                         color: Color(0xFFf8f4ff),
-
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(17.0),
                         ),
@@ -149,18 +151,23 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                           child: Center(
                             child: ListTile(
                               title: Text(hospital['hospital_name']),
-                              subtitle: Text(hospital['district'],style: TextStyle(color: Color(0xFFAB82FF)),),
+                              subtitle: Text(
+                                hospital['district'],
+                                style: TextStyle(color: Color(0xFFAB82FF)),
+                              ),
                               onTap: () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => HospitalDetailsScreen(hospitalId: hospital['id'],hospitalName: hospital['hospital_name'],),
+                                    builder: (context) => HospitalDetailsScreen(
+                                      hospitalId: hospital['id'],
+                                      hospitalName: hospital['hospital_name'],
+                                    ),
                                   ),
                                 );
                               },
                             ),
                           ),
-
                         ),
                       ),
                     ),
@@ -169,7 +176,6 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                 childCount: hospitals.length,
               ),
             ),
-
           ],
         ),
       ),

@@ -22,8 +22,8 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
   }
 
   Future<void> fetchDoctors() async {
-
-    final response = await http.get(Uri.parse('http://192.168.137.1:8000/api/hospitals/${widget.hospitalId}/departments/${widget.departmentId}/doctors/'));
+    final response = await http.get(Uri.parse(
+        'http://192.168.29.206:8000/api/hospitals/${widget.hospitalId}/departments/${widget.departmentId}/doctors/'));
 
     if (response.statusCode == 200) {
       doctors = jsonDecode(response.body);
@@ -36,8 +36,22 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFf1eaff),
       appBar: AppBar(
-        title: Text('Doctor List'),
+
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black87,// Use the iPhone-style back arrow icon
+          ),
+          onPressed: () {
+            // Handle back button press here
+            Navigator.of(context).pop();
+          },
+        ),
+        title: Text('Doctor List',style: TextStyle(color: Color(0xFF755ca7), fontWeight: FontWeight.bold),),
       ),
       body: ListView.builder(
         itemCount: doctors.length,
