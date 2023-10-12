@@ -37,8 +37,7 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
   }
 
   Future<void> fetchHospitals() async {
-    final response =
-        await http.get(Uri.parse('$apiUrl/api/hospitals/'));
+    final response = await http.get(Uri.parse('$apiUrl/api/hospitals/'));
 
     if (response.statusCode == 200) {
       hospitals = jsonDecode(response.body);
@@ -56,7 +55,7 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color(0xFFf1eaff), Color(0xFFe7dcff)],
+            colors: [Color(0xFFf1eaff), Color.fromARGB(255, 201, 187, 231)],
           ),
         ),
         child: CustomScrollView(
@@ -73,22 +72,23 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey, // Shadow color
+                          color: Colors.black.withOpacity(0.2), // Shadow color
                           offset: Offset(0,
-                              2), // Offset of the shadow (horizontal, vertical)
+                              1), // Offset of the shadow (horizontal, vertical)
                           blurRadius: 8, // Blur radius of the shadow
                           spreadRadius: 0, // Spread radius of the shadow
                         ),
                       ],
-                      color: Color(
-                          0xFFf8f4ff), // Background color of the search bar
+                      color: Color.fromARGB(255, 242, 236, 253),
                       borderRadius: BorderRadius.circular(17.0),
                     ),
                     child: TextField(
                       cursorColor: Colors.grey,
                       controller: searchController,
                       decoration: InputDecoration(
-                        hintText: 'Search Hospitals',
+                        hintText: 'Search Hospitals...',
+                        hintStyle:
+                            TextStyle(color: Colors.grey.withOpacity(0.7)),
                         border: InputBorder.none,
                       ),
                     ),
@@ -133,8 +133,10 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.3), // Shadow color
-                            offset: Offset(0, 2), // Offset of the shadow (horizontal, vertical)
+                            color: const Color.fromARGB(96, 80, 80, 80)
+                                .withOpacity(0.1), // Shadow color
+                            offset: Offset(0,
+                                1), // Offset of the shadow (horizontal, vertical)
                             blurRadius: 4, // Blur radius of the shadow
                             spreadRadius: 0, // Spread radius of the shadow
                           ),
@@ -143,7 +145,8 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                         borderRadius: BorderRadius.circular(17.0),
                       ),
                       child: Card(
-                        color: Color(0xFFf8f4ff),
+                        elevation: 0,
+                        color: Color.fromARGB(255, 242, 236, 253),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(17.0),
                         ),
@@ -154,7 +157,7 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                               title: Text(hospital['hospital_name']),
                               subtitle: Text(
                                 hospital['district'],
-                                style: TextStyle(color: Color(0xFFAB82FF)),
+                                style: TextStyle(color: Color(0xFFA38CCF)),
                               ),
                               onTap: () {
                                 Navigator.push(
