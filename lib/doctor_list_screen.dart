@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'colors.dart'; // Import the colors file
+
 class DoctorListScreen extends StatefulWidget {
   final int hospitalId;
   final int departmentId;
@@ -35,16 +37,32 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Doctor List'),
-      ),
-      body: ListView.builder(
-        itemCount: doctors.length,
-        itemBuilder: (BuildContext context, int index) {
-          final doctor = doctors[index];
-          return ListTile(
-            title: Text(doctor['doctor_name']),
-          );
-        },
+        title: Text("Doctors"),
+        backgroundColor: appBarColor, // Set the app bar color
+
+      ),// Set the app bar to null
+      body: Container(
+        decoration: BoxDecoration(
+          color: backgroundColor, // Set the background color
+        ),
+        child: ListView.builder(
+          itemCount: doctors.length,
+          itemBuilder: (BuildContext context, int index) {
+            final doctor = doctors[index];
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                elevation: 3.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: ListTile(
+                  title: Text(doctor['doctor_name']),
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
