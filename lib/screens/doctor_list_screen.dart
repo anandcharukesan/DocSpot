@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../api/endPoint.dart';
 
 class DoctorListScreen extends StatefulWidget {
   final int hospitalId;
@@ -23,7 +24,7 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
 
   Future<void> fetchDoctors() async {
     final response = await http.get(Uri.parse(
-        'http://192.168.29.206:8000/api/hospitals/${widget.hospitalId}/departments/${widget.departmentId}/doctors/'));
+        '$apiUrl/api/hospitals/${widget.hospitalId}/departments/${widget.departmentId}/doctors/'));
 
     if (response.statusCode == 200) {
       doctors = jsonDecode(response.body);
