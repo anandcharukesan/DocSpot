@@ -88,7 +88,7 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                       decoration: InputDecoration(
                         hintText: 'Search Hospitals...',
                         hintStyle:
-                            TextStyle(color: Colors.grey.withOpacity(0.7)),
+                            TextStyle(color: Colors.grey.withOpacity(0.8)),
                         border: InputBorder.none,
                       ),
                     ),
@@ -101,11 +101,16 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                 child: Container(
                   margin: EdgeInsets.only(bottom: 20),
                   decoration: BoxDecoration(
-                      color: Color(0xFFa48dd0),
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(17),
-                          topLeft: Radius.circular(17),
-                          bottomRight: Radius.circular(17))),
+                    borderRadius: BorderRadius.circular(17),
+                    gradient: LinearGradient(
+                      colors: [
+                        Color(0xFFa48dd0),
+                        Color.fromARGB(255, 158, 135, 200),
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                  ),
                   child: Padding(
                     padding: const EdgeInsets.only(
                         top: 14, bottom: 14, right: 30, left: 30),
@@ -127,7 +132,6 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                   final hospital = hospitals[index];
                   return Padding(
                     padding: EdgeInsets.symmetric(
-                        vertical: 3.0,
                         horizontal: 22.0), // Add vertical padding
                     child: Container(
                       decoration: BoxDecoration(
