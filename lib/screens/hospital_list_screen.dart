@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../api/endPoint.dart';
 import 'hospital_details_screen.dart';
 
 void main() {
@@ -37,7 +38,7 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
 
   Future<void> fetchHospitals() async {
     final response =
-        await http.get(Uri.parse('http://192.168.29.206:8000/api/hospitals/'));
+        await http.get(Uri.parse('$apiUrl/api/hospitals/'));
 
     if (response.statusCode == 200) {
       hospitals = jsonDecode(response.body);
