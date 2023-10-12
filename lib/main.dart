@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'hospital_list_screen.dart';
+import 'screens/hospital_list_screen.dart';
 
 void main() {
   runApp(MyApp());
