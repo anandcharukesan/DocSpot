@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../../api/endPoint.dart';
+import '../../colors/customColors.dart';
 import 'hospital_details_screen.dart';
 
-
 class HospitalListScreen extends StatefulWidget {
-
-  final int isFirst; // Add this line
+  final int isFirst;
 
   HospitalListScreen({required this.isFirst});
+
   @override
   _HospitalListScreenState createState() => _HospitalListScreenState();
 }
@@ -38,62 +38,70 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   elevation: 0,
-      //   backgroundColor: Color(0xFFf1eaff),
-      //   leading: const Row(
-      //     mainAxisAlignment: MainAxisAlignment.start,
-      //     children: [
-      //       Padding(
-      //         padding: EdgeInsets.all(20),
-      //         child: Icon(Icons.person, color: Colors.black87), // Replace with your profile image
-      //       ),
-      //
-      //     ],
-      //   ),
-      //
-      // ),
+      backgroundColor: CustomColors.secondaryColor,
+
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Color(0xFFf1eaff), Color.fromARGB(255, 201, 187, 231)],
-          ),
-        ),
+
         child: CustomScrollView(
           slivers: <Widget>[
-            SliverPadding(
-              padding: EdgeInsets.all(8.0),
-              sliver: SliverToBoxAdapter(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 22.0),
-                  child: Container(
-                    margin: EdgeInsets.only(top: 120, bottom: 25),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.2), // Shadow color
-                          offset: Offset(0,
-                              1), // Offset of the shadow (horizontal, vertical)
-                          blurRadius: 8, // Blur radius of the shadow
-                          spreadRadius: 0, // Spread radius of the shadow
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 90, bottom: 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left:20, right: 15,),
+                      child: Container(
+                        padding: EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(17),
+                          color: CustomColors.iconBg,
                         ),
-                      ],
-                      color: Color.fromARGB(255, 242, 236, 253),
-                      borderRadius: BorderRadius.circular(17.0),
-                    ),
-                    child: TextField(
-                      cursorColor: Colors.grey,
-                      controller: searchController,
-                      decoration: InputDecoration(
-                        hintText: 'Search Hospitals...',
-                        hintStyle:
-                            TextStyle(color: Colors.grey.withOpacity(0.8)),
-                        border: InputBorder.none,
+                        child: Image.asset("assets/profile.png",
+                          width: 35,
+                          height: 35,
+                          fit: BoxFit.cover,),
                       ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Hello,',style: TextStyle(color: Colors.black.withOpacity(0.6)),),
+                        SizedBox(height: 3,),
+                        Text('Dhiyanesh',style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),)
+                      ],
+                    ), // Text that says "Hello"
+                    
+                  ],
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 22.0),
+                child: Container(
+                  margin: EdgeInsets.only(top: 40, bottom: 25),
+                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2), // Shadow color
+                        offset: Offset(0, 1), // Offset of the shadow (horizontal, vertical)
+                        blurRadius: 8, // Blur radius of the shadow
+                        spreadRadius: 0, // Spread radius of the shadow
+                      ),
+                    ],
+                    color: Color.fromARGB(255, 242, 236, 253),
+                    borderRadius: BorderRadius.circular(17.0),
+                  ),
+                  child: TextField(
+                    cursorColor: Colors.grey,
+                    controller: searchController,
+                    decoration: InputDecoration(
+                      hintText: 'Search Hospitals...',
+                      hintStyle: TextStyle(color: Colors.grey.withOpacity(0.8)),
+                      border: InputBorder.none,
                     ),
                   ),
                 ),
@@ -131,7 +139,7 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
+                    (BuildContext context, int index) {
                   final hospital = hospitals[index];
                   return Padding(
                     padding: EdgeInsets.symmetric(
@@ -142,8 +150,7 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                           BoxShadow(
                             color: const Color.fromARGB(96, 80, 80, 80)
                                 .withOpacity(0.1), // Shadow color
-                            offset: Offset(0,
-                                1), // Offset of the shadow (horizontal, vertical)
+                            offset: Offset(0, 1), // Offset of the shadow (horizontal, vertical)
                             blurRadius: 4, // Blur radius of the shadow
                             spreadRadius: 0, // Spread radius of the shadow
                           ),
@@ -186,6 +193,9 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
                 },
                 childCount: hospitals.length,
               ),
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(height: 100), // Add some padding to the bottom
             ),
           ],
         ),

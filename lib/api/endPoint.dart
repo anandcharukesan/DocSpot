@@ -1,6 +1,9 @@
 //API
 
-const String apiUrl = 'http://192.168.232.144:8000'; // Replace with your local host link
+
+const String apiUrl = 'http://192.168.29.206:8000'; // Replace with your local host link
+
+
 
 // 10.10.17.34 -> Indhiraraj Clg
 // 192.168.29.206 -> Home WIFI
