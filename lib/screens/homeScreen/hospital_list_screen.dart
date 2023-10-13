@@ -38,6 +38,21 @@ class _HospitalListScreenState extends State<HospitalListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   backgroundColor: Color(0xFFf1eaff),
+      //   leading: const Row(
+      //     mainAxisAlignment: MainAxisAlignment.start,
+      //     children: [
+      //       Padding(
+      //         padding: EdgeInsets.all(20),
+      //         child: Icon(Icons.person, color: Colors.black87), // Replace with your profile image
+      //       ),
+      //
+      //     ],
+      //   ),
+      //
+      // ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
