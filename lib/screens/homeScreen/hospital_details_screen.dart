@@ -134,6 +134,7 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                                   builder: (context) => DoctorListScreen(
                                     hospitalId: widget.hospitalId,
                                     departmentId: department['department_id'],
+                                    hospital_name: widget.hospitalName,
                                   ),
                                 ),
                               );
