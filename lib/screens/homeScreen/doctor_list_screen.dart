@@ -42,22 +42,22 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
     return Scaffold(
       backgroundColor: Color(0xFFf1eaff),
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.black87, // Use the iPhone-style back arrow icon
+        elevation: 1,
+        backgroundColor: Color(0xFFa48dd0),
+       leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios_new,
+              // Use the iPhone-style back arrow icon
+            ),
+            onPressed: () {
+              // Handle back button press here
+              Navigator.of(context).pop();
+            },
           ),
-          onPressed: () {
-            // Handle back button press here
-            Navigator.of(context).pop();
-          },
-        ),
         title: Text(
           'Doctor List',
-          style:
-              TextStyle(color: Color(0xFF755ca7), fontWeight: FontWeight.bold),
+          // style:
+          //     TextStyle(color: Color(0xFF755ca7), fontWeight: FontWeight.bold),
         ),
       ),
       body: ListView.builder(
