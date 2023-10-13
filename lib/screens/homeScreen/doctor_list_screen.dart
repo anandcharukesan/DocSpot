@@ -1,3 +1,4 @@
+import 'package:DocSpot/screens/homeScreen/doctor_page/doctor_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -8,8 +9,9 @@ import '../../api/endPoint.dart';
 class DoctorListScreen extends StatefulWidget {
   final int hospitalId;
   final int departmentId;
+  final String hospital_name;
 
-  DoctorListScreen({required this.hospitalId, required this.departmentId});
+  DoctorListScreen({required this.hospitalId, required this.departmentId,required this.hospital_name});
 
   @override
   _DoctorListScreenState createState() => _DoctorListScreenState();
@@ -17,6 +19,7 @@ class DoctorListScreen extends StatefulWidget {
 
 class _DoctorListScreenState extends State<DoctorListScreen> {
   List<dynamic> doctors = [];
+  late String hospital_name;
 
   @override
   void initState() {
@@ -27,7 +30,7 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
   Future<void> fetchDoctors() async {
     final response = await http.get(Uri.parse(
         '$apiUrl/api/hospitals/${widget.hospitalId}/departments/${widget.departmentId}/doctors/'));
-
+     hospital_name = widget.hospital_name;
     if (response.statusCode == 200) {
       doctors = jsonDecode(response.body);
       print(doctors);
@@ -64,7 +67,17 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
                     itemCount: doctors.length,
                     itemBuilder: (BuildContext context, int index) {
                       final doctor = doctors[index];
-                      return Container(
+                      return GestureDetector(
+            onTap: () {
+              // Navigate to the doctor details screen when a doctor is tapped
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DoctorDetailsScreen(doctor: doctor,hospital: hospital_name),
+                ),
+              );
+            },
+                      child: Container(
                         margin: index == 0
                             ? EdgeInsets.only(
                                 top: 20, bottom: 5, left: 26, right: 26)
@@ -98,7 +111,7 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
                             // Add onTap functionality for doctors if needed
                           ),
                         ),
-                      );
+                      ));
                     },
                   ),
     );
