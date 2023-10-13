@@ -61,14 +61,46 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
         ),
       ),
       body: ListView.builder(
-        itemCount: doctors.length,
-        itemBuilder: (BuildContext context, int index) {
-          final doctor = doctors[index];
-          return ListTile(
-            title: Text(doctor['doctor_name']),
-          );
-        },
-      ),
+                    itemCount: doctors.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final doctor = doctors[index];
+                      return Container(
+                        margin: index == 0
+                            ? EdgeInsets.only(
+                                top: 20, bottom: 5, left: 26, right: 26)
+                            : EdgeInsets.symmetric(vertical: 5, horizontal: 26),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(17),
+                          color: Color.fromARGB(255, 242, 236, 253),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.25),
+                              offset: Offset(0, 2),
+                              blurRadius: 8,
+                              spreadRadius: 0,
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ListTile(
+                            title: Text(
+                              doctor['doctor_name'],
+                              style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xFF2E2344),
+                              ),
+                            ),
+                            subtitle: Text(
+                              doctor['specialization'],
+                              style: TextStyle(color: Color(0xFFA38CCF)),
+                            ),
+                            // Add onTap functionality for doctors if needed
+                          ),
+                        ),
+                      );
+                    },
+                  ),
     );
   }
 }
