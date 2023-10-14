@@ -1,3 +1,4 @@
+import 'package:DocSpot/screens/homeScreen/doctor_page/doctor_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -150,7 +151,17 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                     itemCount: doctors.length,
                     itemBuilder: (BuildContext context, int index) {
                       final doctor = doctors[index];
-                      return Container(
+                      return GestureDetector(
+            onTap: () {
+              // Navigate to the doctor details screen when a doctor is tapped
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DoctorDetailsScreen(doctor: doctor,hospital:widget.hospitalName),
+                ),
+              );
+            },
+                      child: Container(
                         margin: index == 0
                             ? EdgeInsets.only(
                                 top: 20, bottom: 5, left: 26, right: 26)
@@ -184,7 +195,7 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                             // Add onTap functionality for doctors if needed
                           ),
                         ),
-                      );
+                      ));
                     },
                   ),
                 ],
