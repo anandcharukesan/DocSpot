@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "901180022465",
+    "project_id": "docspot-94655",
+    "storage_bucket": "docspot-94655.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901180022465:android:bcb43ee668f31a83b7be40",
+        "android_client_info": {
+          "package_name": "com.example.fetch_image"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx9wajG1S4HSzBZQ_kRekPoeU9NO1-7t8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
