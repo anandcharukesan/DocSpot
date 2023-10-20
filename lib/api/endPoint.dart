@@ -1,4 +1,4 @@
-//API
+////////////////////////////////////API endpoint for django///////////////////////////////////////////////
 
 const String apiUrl = 'http://192.168.137.119:8000'; // Replace with your local host link
 
